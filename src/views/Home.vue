@@ -1,18 +1,29 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    {{ this.$store.state.count }}
+    <van-button type="default" size="large" @click="test">默认按钮</van-button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { Button } from "vant";
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    "van-button": Button
+  },
+  methods: {
+    test() {
+      this.$axios
+        .get("/api/notice/list")
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   }
 };
 </script>
