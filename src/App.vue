@@ -1,7 +1,21 @@
 <template>
   <div id="app">
-    <router-view />
+    <transition-component></transition-component>
   </div>
 </template>
-
-<style lang="scss"></style>
+<script>
+import TransitionComponent from "./components/TransitionComponent";
+export default {
+  components: {
+    "transition-component": TransitionComponent
+  }
+};
+</script>
+<style lang="scss">
+#app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+</style>
